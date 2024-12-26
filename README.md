@@ -24,19 +24,3 @@ python3 bot.py
 # remove
 ./run.sh remove
 ```
-
-# cara setup windows
-```bash
-git clone https://github.com/ariafatah0711/bot-animal-search
-cd bot-animal-search
-
-# install
-run.bat install
-
-# running the bot
-call venv\Scripts\activate
-python3 bot.py
-
-# remove
-run.bat remove
-```

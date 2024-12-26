@@ -6,9 +6,9 @@ if "%1"=="" (
 
 if "%1"=="install" (
     python -m venv venv
-    call venv\Scripts\activate
+    .\venv\Scripts\activate
     pip install -r req.txt
-    echo Virtual environment created. Please run "call venv\Scripts\activate" to activate it.
+    echo Virtual environment created. Please run ".\venv\Scripts\activate" to activate it.
 ) else if "%1"=="remove" (
     rmdir /s /q venv
     echo Virtual environment removed.
