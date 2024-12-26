@@ -1,5 +1,6 @@
 # cara setup token
 - buat bot baru di tele @fatherbot
+
   ![alt text](docs/images/image.png)
   ![alt text](docs/images/image-1.png)
 - buat file .env dan masukan token bot api telegram
@@ -11,8 +12,6 @@
 ```bash
 git clone https://github.com/ariafatah0711/bot-animal-search
 cd bot-animal-search
-
-# with venv
 chmod +x run.sh
 
 # install
