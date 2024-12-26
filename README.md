@@ -1,30 +1,34 @@
 # cara setup linux
 ```bash
-git clone <repo>
-cd <repo>
+git clone https://github.com/ariafatah0711/bot-animal-search
+cd bot-animal-search
 
 # with venv
 chmod +x run.sh
 
-# activate
+# install
 ./run.sh install
 
+# running the bot
+source venv/bin/activate
 python3 bot.py
 
-# deactivate
+# remove
 ./run.sh remove
 ```
 
 # cara setup windows
 ```bash
-git clone <repo>
-cd <repo>
+git clone https://github.com/ariafatah0711/bot-animal-search
+cd bot-animal-search
 
-# activate
+# install
 run.bat install
 
+# running the bot
+call venv\Scripts\activate
 python3 bot.py
 
-# deativate
+# remove
 run.bat remove
 ```
