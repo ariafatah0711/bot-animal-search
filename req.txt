@@ -1,0 +1,4 @@
+python-dotenv
+telebot
+pandas
+openpyxl
