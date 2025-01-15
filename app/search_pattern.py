@@ -1,14 +1,12 @@
-# import pandas as pd
-from .. import boyer_more
+from . import matching
 
-def search_animals(text, df):
-    print(df)
+def search_pattern(text, df):
     print(f"[*] text \t: {text}")
     patterns, match, match_same = [], [], []
 
     for index, row in df.iterrows():
         pattern = row['pattern']
-        position = boyer_more(text.lower(), pattern.lower())
+        position = matching(text.lower(), pattern.lower())
         if position != -1:
             value = row["value"]
             if pattern not in patterns:
