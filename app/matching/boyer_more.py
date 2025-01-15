@@ -1,3 +1,5 @@
+import time
+
 class last_onccurence(object):
     def __init__(self, pattern, alphabet):
          self.occurrences = dict()
