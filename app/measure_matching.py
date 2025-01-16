@@ -1,10 +1,13 @@
 import time
-from . import matching
+from . import kmp, boyer_more
 
-def measure_matching_speed(text, pattern):
+def measure_matching_speed(text, pattern, mode="boyer_more"):
     start_time = time.perf_counter()
     
-    position = matching(text, pattern)
+    if mode == boyer_more:
+        position = boyer_more(text, pattern)
+    else:
+        position = kmp(text, pattern)
 
     end_time = time.perf_counter()
     elapsed_time = end_time - start_time

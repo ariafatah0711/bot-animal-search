@@ -1,14 +1,14 @@
-from . import matching, matching_speed
+from . import matching_speed
 
-def search_pattern(text, df):
+def search_pattern(text, df, mode="boyer_more"):
     print(f"[*] text \t: {text}")
+    print(f"    mode \t: {mode}")
     patterns, match, match_same = [], [], []
 
     print(f"[-] -----------------------------------------")
     for index, row in df.iterrows():
         pattern = row['pattern']
-        # position = matching_speed(text.lower(), pattern.lower())
-        position, elapsed_time = matching_speed(text.lower(), pattern.lower())
+        position, elapsed_time = matching_speed(text.lower(), pattern.lower(), mode)
         if position != -1:
             value = row["value"]
             if pattern not in patterns:
