@@ -22,12 +22,12 @@ def search_pattern(text, df, mode='boyer_more'):
     print(f'[-] -----------------------------------------')
 
     if len(match_same) != 0:
-        print(f'    pattern \t: {', '.join(patterns)}')
-        print(f'    value \t: {', '.join(match_same)} \n')
+        print(f"    pattern \t: {', '.join(patterns)}")
+        print(f"    value \t: {', '.join(match_same)} \n")
         return ', '.join(match_same)
     else:
-        print(f'    pattern \t: {', '.join(patterns)}')
-        print(f'    value \t: {', '.join(match)} \n')
+        print(f"    pattern \t: {', '.join(patterns)}")
+        print(f"    value \t: {', '.join(match)} \n")
         if len(match) != 0:
             return ', '.join(match)
         return 'hewan tidak ditemukan'

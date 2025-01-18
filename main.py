@@ -73,7 +73,7 @@ if __name__ == '__main__':
             save_status = state_user.save_state(user_id, state_id, valid_modes)
 
             if save_status == 0:
-                bot.reply_to(message, f'Mode tidak valid. Pilih salah satu mode berikut: {', '.join(valid_modes)}')
+                bot.reply_to(message, f"Mode tidak valid. Pilih salah satu mode berikut: {', '.join(valid_modes)}")
             else:
                 bot.reply_to(message, f'Mode Anda telah berhasil disimpan: {mode_value}')
 
