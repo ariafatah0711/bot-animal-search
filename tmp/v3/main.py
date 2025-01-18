@@ -15,13 +15,25 @@ if __name__ == '__main__':
     user_states = state_user.load_state()
 
     # animal_local
-    file = 'data.xlsx'    
+    # file = 'data.xlsx'    
+    # pattern_1 = ['pattern', 'value', 'priority']
+    # pattern_2 = ['name', 'description']
+    # valid_modes = ['kmp', 'boyer_more']
+
+    # df_animals = DataLoader(file, pattern_1).load_data(sort=True)
+    # df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
+
+    # animal_drive
+    # file = 'data.xlsx'    
     pattern_1 = ['pattern', 'value', 'priority']
     pattern_2 = ['name', 'description']
     valid_modes = ['kmp', 'boyer_more']
 
-    df_animals = DataLoader(file, pattern_1).load_data(sort=True)
-    df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
+    spreadsheet_id = "1m7AZx05qk4KqHcg9q4esKG2AMXfJbmWIxM77PUNRT2k"
+    credentials = "key.json"
+
+    df_animals = DataLoader(spreadsheet_id, pattern_1, credentials=credentials).load_data(sort=True)
+    df_describe = DataLoader(spreadsheet_id, pattern_2, sheet='Sheet2', credentials=credentials).load_data()
     
     print(df_animals)
 

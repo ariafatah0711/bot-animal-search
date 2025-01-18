@@ -2,6 +2,11 @@ python-dotenv
 telebot
 pandas
 openpyxl
-gspread
-oauth2client
-pandas
+
+# config
+# oauth2client
+# gspread
+# google-auth
+# google-auth-oauthlib
+# google-auth-httplib2
+# google-api-python-client
