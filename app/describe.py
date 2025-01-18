@@ -1,11 +1,16 @@
+from . import print_text, getArgument
+
 def describe(item, df):
-    print('[*] Deskripsi untuk item:', item)
+    args = getArgument(); v = args.verbose
+    # print('[*] Deskripsi untuk item:', item)
+    print_text(f'[*] Deskripsi untuk item:', v, 1)
 
     for index, row in df.iterrows():
         name = row['name']
         description = row['description']
         if name.lower() in item:
-            print(f'    Name: {name}, Description: {description}\n')
+            # print(f'    Name: {name}, Description: {description}\n')
+            print_text(f'    Name: {name}, Description: {description}\n', v, 1)
             result = f'Name: {name} \nDescription: {description}'
             return result
     

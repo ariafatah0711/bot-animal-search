@@ -1,5 +1,5 @@
 import time
-from . import kmp, boyer_more
+from .. import kmp, boyer_more
 
 def measure_matching_speed(text, pattern, mode='boyer_more'):
     start_time = time.perf_counter()

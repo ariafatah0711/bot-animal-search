@@ -1,13 +1,12 @@
-import os
+import os, telebot
 from dotenv import load_dotenv
-import telebot
-# from config import Config
-
 from data import DataLoader
 import app as app
 import state_user
 
 if __name__ == '__main__':
+    args = app.getArgument(); v = args.verbose
+
     load_dotenv('.env')
     BOT_TOKEN = os.environ.get('BOT_TOKEN')
     bot = telebot.TeleBot(str(BOT_TOKEN))
@@ -22,8 +21,11 @@ if __name__ == '__main__':
 
     df_animals = DataLoader(file, pattern_1).load_data(sort=True)
     df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
+
+    # pentest_local
     
-    print(df_animals)
+    app.print_text(df_animals, v, 3)
+    app.print_text(df_describe, v, 3)
     
     '''/start dan /help'''
     @bot.message_handler(commands=['start', 'help'])
@@ -55,6 +57,8 @@ if __name__ == '__main__':
     def search(message):
         try:
             command = message.text[8:]
+            app.print_text(f'{message.from_user.id} : {message.text}', v, 0)
+
             if (len(command) < 1):
                 bot.reply_to(message, f'masukan teks yang ingin dicari\nex: /search hewan berkaki 4')
                 return
@@ -70,6 +74,8 @@ if __name__ == '__main__':
     def describe(message):
         try:
             command = message.text[10:]
+            app.print_text(f'{message.from_user.id} : {message.text}', v, 0)
+            
             if (len(command) < 1):
                 bot.reply_to(message, f'masukan nama hewan yang ingin di lihat informasinya\nex: /describe ayam\nex: /describe sapi, kucing')
                 return
@@ -113,7 +119,7 @@ if __name__ == '__main__':
     @bot.message_handler(commands=['get'])
     def get(message):
         try:
-            state = state = user_states.get(str(message.from_user.id), None)
+            state = state = user_states.get(str(message.from_user.id), valid_modes[1])
 
             if state is None:
                  bot.reply_to(message, 'Anda belum memiliki state yang disimpan.')

@@ -1,7 +1,13 @@
-.env
+# py
 __pycache__
 pythonvenv
 venv
+
+# secret
+.env
 *data_dump*
-.~*
 *key*
+
+# fiile
+.~*
+*log*
