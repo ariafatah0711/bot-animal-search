@@ -23,4 +23,7 @@ python3 bot.py
 
 # remove
 ./run.sh remove
+
+# remove __pycache__
+find . -name "__pycache__" -o -name "*.pyc" | xargs rm -rf
 ```

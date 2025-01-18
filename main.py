@@ -13,6 +13,7 @@ if __name__ == '__main__':
 
     user_states = state_user.load_state()
 
+    # animal_local
     file = 'data.xlsx'    
     pattern_1 = ['pattern', 'value', 'priority']
     pattern_2 = ['name', 'description']
@@ -20,6 +21,8 @@ if __name__ == '__main__':
 
     df_animals = DataLoader(file, pattern_1).load_data(sort=True)
     df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
+
+    # animal_drive
 
     '''/search'''
     @bot.message_handler(commands=['search'])
