@@ -24,6 +24,31 @@ if __name__ == '__main__':
     df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
     
     print(df_animals)
+    
+    '''/start dan /help'''
+    @bot.message_handler(commands=['start', 'help'])
+    def start_and_help(message):
+        try:
+            # Pesan dasar
+            response_message = (
+                "Gunakan perintah berikut untuk mulai:\n"
+                "/search <teks> - Cari pola teks pada data hewan\n"
+                "/describe <nama hewan> - Lihat informasi tentang hewan\n"
+                "/use <mode> - Pilih mode pencarian (kmp atau boyer_more)\n"
+                "/get - Tampilkan mode pencarian Anda saat ini\n"
+                "/help - Tampilkan daftar perintah ini"
+            )
+            
+            # Tambahkan pesan selamat datang jika perintahnya /start
+            if message.text.startswith('/start'):
+                response_message = (
+                    "Selamat datang di bot pencarian hewan! 🐾\n\n"
+                    + response_message
+                )
+            
+            bot.reply_to(message, response_message)
+        except Exception as e:
+            bot.reply_to(message, f'Terjadi kesalahan: {str(e)}')
 
     '''/search'''
     @bot.message_handler(commands=['search'])
