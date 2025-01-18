@@ -10,7 +10,7 @@ def search_pattern(text, df, mode='boyer_more'):
     patterns, match, match_same = [], [], []
 
     # print(f'[-] -----------------------------------------')
-    print_text(f'[-] {'-'*40}', v, 1)
+    print_text(f"[-] {'-'*40}", v, 1)
     for index, row in df.iterrows():
         pattern = row['pattern']
         position, elapsed_time = matching_speed(text.lower(), pattern.lower(), mode)
@@ -28,7 +28,7 @@ def search_pattern(text, df, mode='boyer_more'):
                 print_text(f'    {pattern} \t: {value[:50].ljust(50)} \t found at {elapsed_time}s', v, 2)
                 
     # print(f'[-] -----------------------------------------')
-    print_text(f'[-] {'-'*40}', v, 2)
+    print_text(f"[-] {'-'*40}", v, 1)
 
     if len(match_same) != 0:
         # print(f"    pattern \t: {', '.join(patterns)}")
