@@ -1,6 +1,6 @@
 from . import matching_speed, getArgument, print_text
 
-def search_pattern(text, df, mode='boyer_more'):
+def search_pattern(text, df, mode='boyer_more', list=['pattern', 'value', 'priority']):
     args = getArgument(); v = args.verbose
     # print(f'[*] text \t: {text}')
     # print(f'    mode \t: {mode}')
@@ -12,10 +12,10 @@ def search_pattern(text, df, mode='boyer_more'):
     # print(f'[-] -----------------------------------------')
     print_text(f"[-] {'-'*40}", v, 1)
     for index, row in df.iterrows():
-        pattern = row['pattern']
+        pattern = row[list[0]]
         position, elapsed_time = matching_speed(text.lower(), pattern.lower(), mode)
         if position != -1:
-            value = row['value']
+            value = row[list[1]]
             if pattern not in patterns:
                 patterns.append(pattern)
             if value in match:
@@ -43,4 +43,4 @@ def search_pattern(text, df, mode='boyer_more'):
         print_text(f"    value \t: {', '.join(match)} \n", v, 1)
         if len(match) != 0:
             return ', '.join(match)
-        return 'hewan tidak ditemukan'
+        return 'tidak ditemukan'

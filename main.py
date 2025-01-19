@@ -6,6 +6,7 @@ import state_user
 
 if __name__ == '__main__':
     args = app.getArgument(); v = args.verbose
+    valid_modes = ['kmp', 'boyer_more']
 
     load_dotenv('.env')
     BOT_TOKEN = os.environ.get('BOT_TOKEN')
@@ -13,19 +14,26 @@ if __name__ == '__main__':
 
     user_states = state_user.load_state()
 
-    # animal_local
-    file = 'data.xlsx'    
-    pattern_1 = ['pattern', 'value', 'priority']
-    pattern_2 = ['name', 'description']
-    valid_modes = ['kmp', 'boyer_more']
+    '''animal_local'''
+    # file = 'data.xlsx'    
+    # pattern_1 = ['pattern', 'value', 'priority']
+    # pattern_2 = ['name', 'description']
+    # valid_modes = ['kmp', 'boyer_more']
 
-    df_animals = DataLoader(file, pattern_1).load_data(sort=True)
-    df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
+    # df_animals = DataLoader(file, pattern_1).load_data(sort=True)
+    # df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
 
     # pentest_local
+
+    file = 'data_dump.xlsx'
+    pattern_1 = ['pattern', 'solusi', 'prioritas']
+    # pattern_2 = ['name', 'description']
+    
+    df_animals = DataLoader(file, pattern_1).load_data(sort=True)
+    # df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
     
     app.print_text(df_animals, v, 3)
-    app.print_text(df_describe, v, 3)
+    # app.print_text(df_describe, v, 3)
     
     '''/start dan /help'''
     @bot.message_handler(commands=['start', 'help'])
@@ -64,32 +72,35 @@ if __name__ == '__main__':
                 return
 
             mode = user_states.get(str(message.from_user.id), "boyer_more")
-            result = app.search_pattern(command, df_animals, mode)
-            bot.reply_to(message, str(result))
+            result = app.search_pattern(command, df_animals, mode, pattern_1)
+            # bot.reply_to(message, str(result))
+
+            result_format = '\n'.join([f"- {item}" for item in result.split(', ')]) + '\n'
+            bot.reply_to(message, result_format)
         except Exception as e:
             bot.reply_to(message, f'Terjadi kesalahan: {str(e)}')
     
     '''/describe'''
-    @bot.message_handler(commands=['describe'])
-    def describe(message):
-        try:
-            command = message.text[10:]
-            app.print_text(f'{message.from_user.id} : {message.text}', v, 0)
+    # @bot.message_handler(commands=['describe'])
+    # def describe(message):
+    #     try:
+    #         command = message.text[10:]
+    #         app.print_text(f'{message.from_user.id} : {message.text}', v, 0)
             
-            if (len(command) < 1):
-                bot.reply_to(message, f'masukan nama hewan yang ingin di lihat informasinya\nex: /describe ayam\nex: /describe sapi, kucing')
-                return
+    #         if (len(command) < 1):
+    #             bot.reply_to(message, f'masukan nama hewan yang ingin di lihat informasinya\nex: /describe ayam\nex: /describe sapi, kucing')
+    #             return
 
-            match = []
-            items = command.split(',')
+    #         match = []
+    #         items = command.split(',')
 
-            for item in items:
-                result = app.describe(item, df_describe)
-                match.append(result)
+    #         for item in items:
+    #             result = app.describe(item, df_describe)
+    #             match.append(result)
 
-            bot.reply_to(message, str('\n\n'.join(match)))
-        except Exception as e:
-            bot.reply_to(message, f'Terjadi kesalahan: {str(e)}')
+    #         bot.reply_to(message, str('\n\n'.join(match)))
+    #     except Exception as e:
+    #         bot.reply_to(message, f'Terjadi kesalahan: {str(e)}')
     
     '''/use'''
     @bot.message_handler(commands=['use'])
