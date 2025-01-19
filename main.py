@@ -23,14 +23,11 @@ if __name__ == '__main__':
     # df_animals = DataLoader(file, pattern_1).load_data(sort=True)
     # df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
 
-    # pentest_local
-
+    '''pentest_local'''
     file = 'data_dump.xlsx'
     pattern_1 = ['pattern', 'solusi', 'prioritas']
-    # pattern_2 = ['name', 'description']
     
     df_animals = DataLoader(file, pattern_1).load_data(sort=True)
-    # df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
     
     app.print_text(df_animals, v, 3)
     # app.print_text(df_describe, v, 3)
