@@ -9,10 +9,15 @@ class DataLoader:
     def load_data(self, sort=False):
         try:
             df = pd.read_excel(self.file, sheet_name=self.sheet, usecols=self.row)
+            # df = pd.read_excel(self.file, sheet_name=self.sheet)
 
-            for row in self.row:
-                # df[row].fillna(method='ffill', inplace=True)
-                df[row] = df[row].ffill()
+            if len(self.row) == 1:
+                df = df.dropna(how='any')
+                pass
+            else:
+                for row in self.row:
+                    df[row].fillna(method='ffill', inplace=True)
+                    df[row] = df[row].ffill()
                         
         except ValueError:
             raise ValueError(f"Sheet dengan nama '{self.sheet}' tidak ditemukan.")

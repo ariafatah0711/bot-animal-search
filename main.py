@@ -24,12 +24,28 @@ if __name__ == '__main__':
     # df_describe = DataLoader(file, pattern_2, 'Sheet2').load_data()
 
     '''pentest_local'''
+    # file = 'data_dump.xlsx'
+    # pattern_1 = ['pattern', 'solusi', 'prioritas']
+    
+    # df_animals = DataLoader(file, pattern_1).load_data(sort=True)
+    
+    '''pentest_search'''
     file = 'data_dump.xlsx'
-    pattern_1 = ['pattern', 'solusi', 'prioritas']
+    pattern_list = DataLoader(file, ['pattern'], 'Sheet2').load_data()
+    pattern_list_value = DataLoader(file, ['solusi'], 'Sheet2').load_data()
     
-    df_animals = DataLoader(file, pattern_1).load_data(sort=True)
+    # app.search_pattern_with('aku inngin mengatasi serangan dos', pattern_list_value, pattern_list)
+    # app.search_pattern_with('menjaga https agar maan dari serangan dos atau ddos', pattern_list_value, pattern_list)
+    # result = app.search_pattern_with('menjaga https agar aman', pattern_list_value, pattern_list)
+    # print(result)
+    # app.search_pattern_with('aku inngin mengatasi serangan dos', pattern_list_value, pattern_list)
+    # app.search_pattern_with('aku inngin mengatasi serangan dos', pattern_list_value, pattern_list)
     
-    app.print_text(df_animals, v, 3)
+
+    # print(pattern_list)
+    # print(pattern_list_value)
+    
+    # app.print_text(df_animals, v, 3)
     # app.print_text(df_describe, v, 3)
     
     '''/start dan /help'''
@@ -69,7 +85,8 @@ if __name__ == '__main__':
                 return
 
             mode = user_states.get(str(message.from_user.id), "boyer_more")
-            result = app.search_pattern(command, df_animals, mode, pattern_1)
+            # result = app.search_pattern(command, df_animals, mode, pattern_1)
+            result = app.search_pattern_with(command, pattern_list_value, pattern_list)
             # bot.reply_to(message, str(result))
 
             result_format = '\n'.join([f"- {item}" for item in result.split(', ')]) + '\n'

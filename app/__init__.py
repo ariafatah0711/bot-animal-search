@@ -9,5 +9,5 @@ from .matching.kmp import kmp
 from .util.measure_matching import measure_matching_speed as matching_speed
 
 '''function'''
-from .search_pattern import search_pattern
+from .search_pattern import search_pattern, search_pattern_with
 from .describe import describe

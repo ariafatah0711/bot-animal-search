@@ -5,7 +5,7 @@ venv
 
 # secret
 .env
-*data_dump*
+# *data_dump*
 *key*
 
 # fiile
