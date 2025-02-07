@@ -1,3 +1,5 @@
+#!venv/bin/python3
+
 import os, telebot
 from dotenv import load_dotenv
 from data import DataLoader
