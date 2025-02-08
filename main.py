@@ -1,4 +1,4 @@
-#venv/bin/python3
+#!venv/bin/python3
 
 import os, telebot
 from dotenv import load_dotenv
